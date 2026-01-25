@@ -1,4 +1,4 @@
-package br.com.dsacramento.EstudoSpringboot;
+package br.com.dsacramento.CadastroDeNInjas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

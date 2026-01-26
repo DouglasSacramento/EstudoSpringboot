@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "tb_cadastro_ninjas")
+@Table(name = "tb_cadastro")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,7 +26,7 @@ public class NinjaModel {
     private String email;
 
     @Column(name = "img_url")
-    private String imaUrl;
+    private String imgUrl;
 
     // @ManyToOne Um ninja tem uma única missão.
     @ManyToOne

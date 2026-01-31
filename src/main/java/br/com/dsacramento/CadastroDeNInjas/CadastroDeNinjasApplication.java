@@ -12,4 +12,4 @@ public class CadastroDeNinjasApplication {
 
 }
 
-// Última aula assistida #P66 , Começar na seguinte!
+// Última aula assistida #P78 , Começar na seguinte!

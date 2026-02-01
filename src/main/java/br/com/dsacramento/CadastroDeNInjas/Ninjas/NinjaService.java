@@ -14,6 +14,11 @@ public class NinjaService {
         this.ninjaRepository = ninjaRepository;
     }
 
+    // Criar ninja
+    public NinjaModel criarNinja (NinjaModel ninja){
+        return ninjaRepository.save(ninja);
+    }
+
     // Listar todos
     public List<NinjaModel> listarNinjas(){
         return ninjaRepository.findAll();
@@ -25,8 +30,27 @@ public class NinjaService {
         return ninja.orElse(null);
     }
 
-    // Criar ninja
-    public NinjaModel criarNinja (NinjaModel ninja){
+    // Editar ninja
+    public NinjaModel editarNinja(UUID id, NinjaModel ninjaEditado){
+        NinjaModel ninja = ninjaRepository.findById(id)
+                .orElse(null);
+
+        if (ninjaEditado.getEmail() != null){
+            ninja.setEmail(ninjaEditado.getEmail());
+        }
+
+        if (ninjaEditado.getNome() != null){
+            ninja.setNome(ninjaEditado.getNome());
+        }
+
+        if (ninjaEditado.getIdade() != 0){
+            ninja.setIdade(ninjaEditado.getIdade());
+        }
+
+        if (ninjaEditado.getMissoes() != null){
+            ninja.setMissoes(ninjaEditado.getMissoes());
+        }
+
         return ninjaRepository.save(ninja);
     }
 

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class NinjaService {
@@ -19,7 +20,7 @@ public class NinjaService {
     }
 
     // Listar por id
-    public NinjaModel listarNinjaPorId(Long id){
+    public NinjaModel listarNinjaPorId(UUID id){
         Optional<NinjaModel> ninja = ninjaRepository.findById(id);
         return ninja.orElse(null);
     }
@@ -29,4 +30,8 @@ public class NinjaService {
         return ninjaRepository.save(ninja);
     }
 
+    // Deletar ninja
+    public void deletarNinjaPorId(UUID id){
+        ninjaRepository.deleteById(id);
+    }
 }

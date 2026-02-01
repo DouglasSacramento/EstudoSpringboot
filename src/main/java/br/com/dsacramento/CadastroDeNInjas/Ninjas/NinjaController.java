@@ -3,6 +3,7 @@ package br.com.dsacramento.CadastroDeNInjas.Ninjas;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/ninjas")
@@ -28,7 +29,7 @@ public class NinjaController {
 
     // Mostrar por Id
     @GetMapping("/listar/{id}")
-    public NinjaModel listarNinjaPorId(@PathVariable Long id){
+    public NinjaModel listarNinjaPorId(@PathVariable UUID id){
         return ninjaService.listarNinjaPorId(id);
     }
 
@@ -37,9 +38,10 @@ public class NinjaController {
     public String alterarNinjaPorId(){
         return "Alterar ninja por id";
     }
+
     // Deletar
-    @DeleteMapping("/deletarID")
-    public String deletarNinjaPorId(){
-        return "Deletar ninja por id";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarNinjaPorId(@PathVariable UUID id){
+        ninjaService.deletarNinjaPorId(id);
     }
 }

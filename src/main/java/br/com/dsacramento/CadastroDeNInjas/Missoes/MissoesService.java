@@ -22,7 +22,11 @@ public class MissoesService {
     // Listar missoes por Id
     public MissoesModel listarMissaoPorId(Long id){
         Optional<MissoesModel> missao = missoesRepository.findById(id);
-        return missao.orElseThrow(() -> new RuntimeException("Missão not found"));
+        return missao.orElse(null);
     }
 
+    // Criar missão
+    public MissoesModel criarMissao(MissoesModel novaMissao){
+            return missoesRepository.save(novaMissao);
+    }
 }

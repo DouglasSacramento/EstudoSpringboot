@@ -1,5 +1,6 @@
 package br.com.dsacramento.CadastroDeNInjas.Missoes;
 
+import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,4 +35,21 @@ public class MissoesService {
     public void deletarMissao(Long id){
         missoesRepository.deleteById(id);
     }
+
+    // Editar missao
+    public MissoesModel editarMissao(Long id, MissoesModel missaoEditada) {
+        MissoesModel missao = missoesRepository.findById(id)
+                .orElse(null);
+
+        if (missaoEditada.getNome() != null) {
+            missao.setNome(missaoEditada.getNome());
+        }
+
+        if (missaoEditada.getDificuldade() != null) {
+            missao.setDificuldade(missaoEditada.getDificuldade());
+        }
+
+        return missoesRepository.save(missao);
+    }
+
 }

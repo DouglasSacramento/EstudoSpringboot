@@ -34,4 +34,9 @@ public class MissoesController {
     public void deletarMissao(@PathVariable Long id){
         missoesService.deletarMissao(id);
     }
+
+    @PatchMapping("/editar/{id}")
+    public MissoesModel editarMissao(@PathVariable Long id, @RequestBody MissoesModel missaoEditada){
+        return missoesService.editarMissao(id, missaoEditada);
+    }
 }

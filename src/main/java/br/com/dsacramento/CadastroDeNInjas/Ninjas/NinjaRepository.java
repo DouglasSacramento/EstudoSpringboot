@@ -2,6 +2,8 @@ package br.com.dsacramento.CadastroDeNInjas.Ninjas;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface NinjaRepository extends JpaRepository<NinjaModel, Long> {
+import java.util.UUID;
+
+public interface NinjaRepository extends JpaRepository<NinjaModel, UUID> {
 
 }

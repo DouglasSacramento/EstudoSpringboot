@@ -4,6 +4,8 @@ import br.com.dsacramento.CadastroDeNInjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "tb_cadastro")
 @Data
@@ -12,9 +14,9 @@ import lombok.*;
 public class NinjaModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
-    private Long id;
+    private UUID id;
 
     @Column(name = "nome")
     private String nome;

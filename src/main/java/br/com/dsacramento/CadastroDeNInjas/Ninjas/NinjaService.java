@@ -10,13 +10,18 @@ import java.util.UUID;
 public class NinjaService {
 
     private NinjaRepository ninjaRepository;
-    public NinjaService(NinjaRepository ninjaRepository) {
+    private NinjaMapper ninjaMapper;
+
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     // Criar ninja
-    public NinjaModel criarNinja (NinjaModel ninja){
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja (NinjaDTO ninjaDTO){
+        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+        ninja = ninjaRepository.save(ninja);
+        return ninjaMapper.map(ninja);
     }
 
     // Listar todos
@@ -49,6 +54,10 @@ public class NinjaService {
 
         if (ninjaEditado.getMissoes() != null){
             ninja.setMissoes(ninjaEditado.getMissoes());
+        }
+
+        if (ninjaEditado.getRank() != null){
+            ninja.setRank(ninjaEditado.getRank());
         }
 
         return ninjaRepository.save(ninja);
